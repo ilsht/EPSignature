@@ -103,7 +103,6 @@ open class EPSignatureViewController: UIViewController {
     
     @objc func onTouchCancelButton() {
         signatureDelegate?.epSignature!(self, didCancel: NSError(domain: "EPSignatureDomain", code: 1, userInfo: [NSLocalizedDescriptionKey:"User not signed"]))
-        dismiss(animated: true, completion: nil)
     }
 
     @objc func onTouchDoneButton() {
@@ -114,7 +113,6 @@ open class EPSignatureViewController: UIViewController {
                 signatureView.saveSignature(filePath)
             }
             signatureDelegate?.epSignature!(self, didSign: signature, boundingRect: signatureView.getSignatureBoundsInCanvas())
-            dismiss(animated: true, completion: nil)
         } else {
             showAlert("You did not sign", andTitle: "Please draw your signature")
         }
